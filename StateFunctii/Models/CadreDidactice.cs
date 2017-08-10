@@ -8,7 +8,6 @@ namespace StateFunctii.Models
 	public class CadreDidactice
 	{
         public int id { get; set; }
-        [System.ComponentModel.DefaultValue(0)]
         public int Departament { get; set; }
         public string nume { get; set; }
         public string prenume { get; set; }

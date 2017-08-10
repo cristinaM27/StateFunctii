@@ -82,10 +82,13 @@
   <ItemGroup>
     <Content Include="Global.asax" />
     <Content Include="Views\CadreDidactice.html" />
+    <Content Include="Views\css\data.css" />
     <Content Include="Views\css\SiteStyle.css" />
     <Content Include="Views\Data.html" />
+    <Content Include="Views\js\data.js" />
     <Content Include="Views\js\script.js" />
     <Content Include="Views\Login.html" />
+    <Content Include="Views\people.png" />
     <Content Include="Views\Varianta 1_negru.jpg" />
     <Content Include="Web.config">
       <SubType>Designer</SubType>

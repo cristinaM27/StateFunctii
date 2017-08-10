@@ -23,7 +23,7 @@ $('#btnLogin').click(function () {
 });
 
 $('#btn').click(function () {
-    var ulCadre = $('#ulCadre');
+   var ulCadre = $('#ulCadre');
         $.ajax({
             type: 'GET',
             url: '/api/CadreDidactice',
@@ -31,7 +31,7 @@ $('#btn').click(function () {
             success: function (response) {
                 ulCadre.empty();
                 $.each(response, function (index, val) {
-                    var fullCadru = val.id + ' ' + val.Departament + ' ' + val.nume + ' ' + val.prenume + ' ' + val.titular + ' ' + val.Pozitia;
+                   var fullCadru = val.id + ' ' + val.Departament + ' ' + val.nume + ' ' + val.prenume + ' ' + val.titular + ' ' + val.Pozitia;
                     ulCadre.append('<li>' + fullCadru + '</li>')
                 });
             },

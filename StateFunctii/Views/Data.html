@@ -1,10 +1,135 @@
 ﻿<!DOCTYPE html>
 <html>
 <head>
-    <meta charset="utf-8" />
-    <title></title>
+
+    <meta charset="UTF-8">
+    <title>Cadre Didactice </title>
+    <link rel="stylesheet" href="css/data.css">
 </head>
+
 <body>
-    <h1>Login successful</h1>
+
+    <div class="headercls" id="header">
+        <div class="logo">
+            <a href="#">Cadre Didactice</a>
+            <button id="btnLogout" class="btnlogout">Logout</button>
+        </div>
+    </div>
+    <a class="mobile">MENU</a>
+    <div id="container">
+
+        <div class="sidebar">
+            <ul id="nav">
+                <li>
+                    <span>
+                        <img src="people.png" width="32" height="32">
+                    </span>
+                    <a id="click_href" class="selected" href="#">Cadre didactice</a>
+                </li>
+            </ul>
+        </div>
+
+        <!--<title>Bootstrap Example</title>-->
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+        <div class="container1">
+            <!-- Trigger the modal with a button -->
+            <button type="button" class="btnadd" data-toggle="modal" data-target="#myModal">Add New</button>
+            <!-- Modal -->
+            <div class="modal fade in" id="myModal" role="dialog">
+                <div class="modal-dialog">
+                    <!-- Modal content-->
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <button type="button" class="btnclose" data-dismiss="modal">&times;</button>
+                            <h4 class="modal-title">Add Cadre Didactice</h4>
+                        </div>
+                        <div class="modal-body">
+                            <label>Departament</label>
+                            <input class="input1" type="textbox" size="20" name="Departament" /><br><br>
+                            <label>Nume</label>
+                            <input class="input2" type="textbox" size="20" name="Nume" /><br><br>
+                            <label>Prenume</label>
+                            <input class="input3" type="textbox" size="20" name="Prenume" /><br><br>
+                            <label>Titular</label>
+                            <input class="input4" type="textbox" size="20" name="Titular" /><br><br>
+                            <label>Pozitie</label>
+                            <input class="input5" type="textbox" size="20" name="Pozitie" /><br><br>
+
+                        </div>
+                        <div class="modal-footer">
+                            <button class="btnsave" type="button" data-dismiss="modal">Save changes</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+        <div class="content">
+
+            <input class="search_bar" type="text" id="searchbar" onkeyup="myFunction()" placeholder="Search for ..." title="Type in">
+
+            <button id="btnDelete" class="btnDel">Delete</button>
+            <button type="button" class="btnedit" data-toggle="modal" data-target="#myModal1">Edit</button>
+            <!-- Modal -->
+            <div class="modal fade in" id="myModal1" role="dialog">
+                <div class="modal-dialog">
+                    <!-- Modal content-->
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <button type="button" class="btnclose" data-dismiss="modal">&times;</button>
+                            <h4 class="modal-title">Edit Cadre Didactice</h4>
+                        </div>
+                        <div class="modal-body">
+                            <label>Departament</label>
+                            <input class="input1" type="textbox" size="20" name="Departament" /><br><br>
+                            <label>Nume</label>
+                            <input class="input2" type="textbox" size="20" name="Nume" /><br><br>
+                            <label>Prenume</label>
+                            <input class="input3" type="textbox" size="20" name="Prenume" /><br><br>
+                            <label>Titular</label>
+                            <input class="input4" type="textbox" size="20" name="Titular" /><br><br>
+                            <label>Pozitie</label>
+                            <input class="input5" type="textbox" size="20" name="Pozitie" /><br><br>
+
+                        </div>
+                        <div class="modal-footer">
+                            <button class="btnsave" type="button" data-dismiss="modal">Edit changes</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+
+
+
+
+            <table class="tableD" id="Database1">
+                <tbody>
+                    <tr>
+                        <th>ID</th>
+                        <th>Departament</th>
+                        <th>Nume       </th>
+                        <th>Prenume    </th>
+                        <th>Titular    </th>
+                        <th>Pozitie    </th>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+    <script src="~/Scripts/jquery-3.1.1.min.js"></script>
+    <script src="~/Scripts/jquery.validate.min.js"></script>
+    <script scr="https://cdn.datatables.net/1.10.13/js/jquery.dataTables.min.js"></script>
+    <script src="~/Scripts/jquery-ui-1.12.1.min.js"></script>
+    <!-- #container -->
+    <script src="https://code.jquery.com/jquery-2.2.4.min.js"></script>
+    <script src="js/data.js"></script>
+
 </body>
 </html>
