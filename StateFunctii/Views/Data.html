@@ -8,6 +8,15 @@
 </head>
 
 <body>
+    <div id="navigation">
+        <a href="javascript: onClick=showPage('1')">page 1</a>
+        <a href="javascript: onClick=showPage('2')">page 2</a>
+    </div>
+    <div id="page1" style="display: none;">
+    </div>
+    <div id="page2" style="display: none;">
+    </div>
+
 
     <div class="headercls" id="header">
         <div class="logo">
@@ -49,19 +58,19 @@
                         </div>
                         <div class="modal-body">
                             <label>Departament</label>
-                            <input class="input1" type="textbox" size="20" name="Departament" /><br><br>
+                            <input class="input1" id="txtDep" type="textbox" name="Departament" /><br><br>
                             <label>Nume</label>
-                            <input class="input2" type="textbox" size="20" name="Nume" /><br><br>
+                            <input class="input2" id="txtNume" type="textbox" name="Nume" /><br><br>
                             <label>Prenume</label>
-                            <input class="input3" type="textbox" size="20" name="Prenume" /><br><br>
+                            <input class="input3" id="txtPren" type="textbox" name="Prenume" /><br><br>
                             <label>Titular</label>
-                            <input class="input4" type="textbox" size="20" name="Titular" /><br><br>
+                            <input class="input4" id="txtTitular" type="textbox" name="Titular" /><br><br>
                             <label>Pozitie</label>
-                            <input class="input5" type="textbox" size="20" name="Pozitie" /><br><br>
+                            <input class="input5" id="txtPoz" type="textbox" name="Pozitie" /><br><br>
 
                         </div>
                         <div class="modal-footer">
-                            <button class="btnsave" type="button" data-dismiss="modal">Save changes</button>
+                            <button class="btnsave" id="btnSave" type="button" data-dismiss="modal">Save changes</button>
                         </div>
                     </div>
                 </div>
@@ -73,8 +82,8 @@
 
             <input class="search_bar" type="text" id="searchbar" onkeyup="myFunction()" placeholder="Search for ..." title="Type in">
 
-            <button id="btnDelete" class="btnDel">Delete</button>
-            <button type="button" class="btnedit" data-toggle="modal" data-target="#myModal1">Edit</button>
+            <!-- <button id="btnDelete" class="btnDel">Delete</button>-->
+            <!-- <button type="button" class="btnedit" data-toggle="modal" data-target="#myModal1" id="modalEdit">Edit</button>-->
             <!-- Modal -->
             <div class="modal fade in" id="myModal1" role="dialog">
                 <div class="modal-dialog">
@@ -86,50 +95,94 @@
                         </div>
                         <div class="modal-body">
                             <label>Departament</label>
-                            <input class="input1" type="textbox" size="20" name="Departament" /><br><br>
+                            <input class="input1" id="txtDep" type="text" size="20" name="Departament" /><br><br>
                             <label>Nume</label>
-                            <input class="input2" type="textbox" size="20" name="Nume" /><br><br>
+                            <input class="input2" id="txtNume" type="text" size="20" name="Nume" /><br><br>
                             <label>Prenume</label>
-                            <input class="input3" type="textbox" size="20" name="Prenume" /><br><br>
+                            <input class="input3" id="txtPren" type="text" size="20" name="Prenume" /><br><br>
                             <label>Titular</label>
-                            <input class="input4" type="textbox" size="20" name="Titular" /><br><br>
+                            <input class="input4" id="txtTitular" type="text" size="20" name="Titular" /><br><br>
                             <label>Pozitie</label>
-                            <input class="input5" type="textbox" size="20" name="Pozitie" /><br><br>
+                            <input class="input5" id="txtPoz" type="text" size="20" name="Pozitie" /><br><br>
 
                         </div>
                         <div class="modal-footer">
-                            <button class="btnsave" type="button" data-dismiss="modal">Edit changes</button>
+                            <button id="btnEdit" class="btnsave" type="button" data-dismiss="modal">Edit changes</button>
                         </div>
                     </div>
                 </div>
             </div>
-
-
-
-
-
-            <table class="tableD" id="Database1">
-                <tbody>
-                    <tr>
-                        <th>ID</th>
-                        <th>Departament</th>
-                        <th>Nume       </th>
-                        <th>Prenume    </th>
-                        <th>Titular    </th>
-                        <th>Pozitie    </th>
-                    </tr>
-                </tbody>
-            </table>
         </div>
-    </div>
 
-    <script src="~/Scripts/jquery-3.1.1.min.js"></script>
-    <script src="~/Scripts/jquery.validate.min.js"></script>
-    <script scr="https://cdn.datatables.net/1.10.13/js/jquery.dataTables.min.js"></script>
-    <script src="~/Scripts/jquery-ui-1.12.1.min.js"></script>
-    <!-- #container -->
-    <script src="https://code.jquery.com/jquery-2.2.4.min.js"></script>
-    <script src="js/data.js"></script>
+        <!--cristi-->
+        <!-- Modal -->
+        <div class="modal fade" id="cristi" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                        <h4 class="modal-title" id="currentUserName">User</h4>
+                    </div>
+                    <div class="modal-body">
+                        <fieldset>
+                            <div class="form-group">
+                                <input id="currentUserEmail" class="form-control" placeholder="Email" type="email" autofocus="">
+                            </div>
+                            <div class="form-group">
+                                <input class="form-control" placeholder="Password" type="password">
+                            </div>
+                            <div class="form-group">
+                                <input class="form-control" placeholder="Confirm password" type="password">
+                            </div>
+                        </fieldset>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                        <button type="button" class="btn btn-default btn-success" onclick="">Save changes</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!--cristi-->
 
+        <!--<table class="tableD" id="Database1">
+             <thead>
+                 <tr>
+                     <th>Id</th>
+                     <th>Departament</th>
+                     <th>Nume       </th>
+                     <th>Prenume    </th>
+                     <th>Titular    </th>
+                     <th>Pozitia    </th>
+                 </tr>
+             </thead>
+        </table>-->
+        <div class="row">
+            <div class="col-sm-6">
+                <table id="cadreTable"
+                       class="tableD">
+                    <thead>
+                        <tr>
+                            <th>Id</th>
+                            <th>Departament</th>
+                            <th>Nume</th>
+                            <th>Prenume</th>
+                            <th>Titular</th>
+                            <th>Pozitia</th>
+                            <th>Edit</th>
+                            <th>Delete</th>
+                        </tr>
+                    </thead>
+                </table>
+            </div>
+        </div>
+
+        <script src="~/Scripts/jquery-3.1.1.min.js"></script>
+        <script src="~/Scripts/jquery.validate.min.js"></script>
+        <script scr="https://cdn.datatables.net/1.10.13/js/jquery.dataTables.min.js"></script>
+        <script src="~/Scripts/jquery-ui-1.12.1.min.js"></script>
+        <!-- #container -->
+        <!--<script src="https://code.jquery.com/jquery-2.2.4.min.js"></script>-->
+        <script src="js/data.js"></script>
 </body>
 </html>

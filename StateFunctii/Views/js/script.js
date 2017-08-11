@@ -45,7 +45,7 @@ $('#btn').click(function () {
 $('#btn1').click(function () {
     $.ajax({
         type: 'DELETE',
-        url: '/api/CadreDidactice/2154',
+        url: '/api/CadreDidactice/398',
         dataType: 'json',
         success: function (response) {
             alert("Sters cu succes");
@@ -77,7 +77,7 @@ $('#btn2').click(function () {
 $('#btn3').click(function () {
     var cadru = { Departament: $('#txtDep').val(), nume: $('#txtNume').val(), prenume: $('#txtPren').val(), titular: $('#txtTitular').val(), Pozitia: $('#txtPoz').val() };
     $.ajax({
-        url: '/api/CadreDidactice/2155',
+        url: '/api/CadreDidactice/2158',
         type: "PUT",
         contentType: 'application/json',
         data:
