@@ -4,25 +4,69 @@ $('#linkClose').click(function () {
 });
 $('#btnLogin').click(function () {
     var user = { Scurt: $('#txtScurt').val(), Parola: $('#txtParola').val() };
-        $.ajax({
-            url: 'http://localhost:51383/api/Views/Login/SignIn',
+    var selectedValue = document.getElementById("list").value;
+    //alert(selectedValue);
+    switch (selectedValue)
+    {
+        case "Facultate": $.ajax({
+           url: 'http://localhost:51383/api/Views/Login/SignIn1',
             type: "POST",
             contentType: 'application/json',
             data:
-            JSON.stringify(user),           
-           success: function (response) {
-                if (status == "success") 
+            JSON.stringify(user),
+            success: function (response) {
+                if (status == "success")
                     sessionStorage.setItem('accesToken', response.access_token);
-                    sessionStorage.setItem('Scurt', response.Scurt);
-                    window.location.href = "Data.html";
+                //sessionStorage.setItem('Scurt', response.Scurt);
+                sessionStorage.setItem("id1", response);
+                window.location.href = "GrupeAn.html";
             },
             error: function (error) {
                 alert("Usename or password incorrect!");
             }
         });
+            break;
+        case "Universitate": $.ajax({
+            url: 'http://localhost:51383/api/Views/Login/SignIn2',
+            type: "POST",
+            contentType: 'application/json',
+            data:
+            JSON.stringify(user),
+            success: function (response) {
+                if (status == "success")
+                    sessionStorage.setItem('accesToken', response.access_token);
+                //sessionStorage.setItem('Scurt', response.Scurt);
+                sessionStorage.setItem("id2", response);
+                window.location.href = "Data.html";
+            },
+            error: function (error) {
+                alert("Usename or password incorrect!");
+            }
+        });
+            break;
+        case "Departament": $.ajax({
+            url: 'http://localhost:51383/api/Views/Login/SignIn3',
+            type: "POST",
+            contentType: 'application/json',
+            data:
+            JSON.stringify(user),
+            success: function (response) {
+                if (status == "success")
+                    sessionStorage.setItem('accesToken', response.access_token);
+                //sessionStorage.setItem('Scurt', response.Scurt);
+                sessionStorage.setItem("id3", response);
+                window.location.href = "Data.html";
+            },
+            error: function (error) {
+                alert("Usename or password incorrect!");
+            }
+        });
+    }
+       
 });
 
-$('#btn').click(function () {
+
+/*$('#btn').click(function () {
    var ulCadre = $('#ulCadre');
         $.ajax({
             type: 'GET',
@@ -91,4 +135,4 @@ $('#btn3').click(function () {
             alert("Nu s-a actualizat.");
         }
     });
-});
+});*/

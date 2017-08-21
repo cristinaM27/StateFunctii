@@ -1,0 +1,137 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <link rel="stylesheet" href="css/data.css">
+</head>
+<body>
+    <div class="headercls" id="header">
+        <div class="logo">
+            <a href="#">Grupe Facultate</a>
+            <button id="btnLogout" class="btnlogout">Logout</button>
+        </div>
+    </div>
+
+    <div class="sidebar">
+        <ul id="nav">
+            <li>
+                <span>
+                    <img src="grupa.gif" width="32" height="32">
+                </span>
+                <a id="click_href" class="selected" href="#">Grupe Facultate</a>
+                <span>
+                    <img id="logo1" src="carte.png" width="32" height="32">
+                </span>
+                <a id="click_href1" class="selected" href="#">Planuri Invatamant</a>
+            </li>
+        </ul>
+    </div>
+
+
+
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <div class="container1">
+        <button type="button" class="btnadd" data-toggle="modal" data-target="#myModal">Add New</button>
+        <div class="modal fade in" id="myModal" role="dialog">
+            <div class="modal-dialog">
+                <!-- Modal content-->
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="btnclose" data-dismiss="modal">&times;</button>
+                        <h4 class="modal-title">Add Grupe</h4>
+                    </div>
+                    <div class="modal-body">
+                        <label>Cod_pi</label>
+                        <input class="in1" id="txtCod" type="textbox" size="20" name="Cod_pi" /><br><br>
+                        <label>An</label>
+                        <input class="in2" id="txtAn" type="textbox" size="20" name="An" /><br><br>
+                        <label>Numar Grupe</label>
+                        <input class="in3" id="txtNrg" type="textbox" size="20" name="Numar Grupe" /><br><br>
+                        <label>Numar semigrupe</label>
+                        <input class="in4" id="txtNrsg" type="textbox" size="20" name="Numar semigrupe" /><br><br>
+                        <label>Facultate</label>
+                        <input class="in5" id="txtFac" type="textbox" name="Facultate" /><br><br>
+                      
+                    </div>
+                    <div class="modal-footer">
+                        <button class="btnsave" id="btnSave" type="button" data-dismiss="modal">Save changes</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        </div>
+        <div class="content">
+        <input class="search_bar" type="text" id="searchbar" onkeyup="myFunction()" placeholder="Caută după codul planului de învățământ">
+        <p id="p1">Bine ai venit!!!</p>
+            <div class="modal fade in" id="myModal1" role="dialog">
+                <div class="modal-dialog">
+                    <!-- Modal content-->
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <button type="button" class="btnclose" data-dismiss="modal">&times;</button>
+                            <h4 class="modal-title">Edit Grupe</h4>
+                        </div>
+                        <div class="modal-body">
+                            <label>Cod plan invatamant</label>
+                            <input class="mod1" id="txtCod1" type="textbox" size="20" name="Cod_pi" /><br><br>
+                            <label>An</label>
+                            <input class="mod2" id="txtAn1" type="textbox" size="20" name="An" /><br><br>
+                            <label>Numar grupe</label>
+                            <input class="mod3" id="txtNr1" type="textbox" size="20" name="Nr_grupe" /><br><br>
+                            <label>Numar subgrupe</label>
+                            <input class="mod4" id="txtNr_sub" type="textbox" name="Nr_subgr" /><br><br>
+                      
+                        </div>
+                        <div class="modal-footer">
+                            <button id="btnEdit" class="btnsave" type="button" data-dismiss="modal">Edit changes</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+                <div class="row">
+                    <div class="col-sm-6">
+                        <table id="grupeTable"
+                               class="tableD">
+                            <thead>
+                                <tr>
+                                    <th>Id</th>
+                                    <th>Cod plan invatamant</th>
+                                    <th>An</th>
+                                    <th>Numar grupe</th>
+                                    <th>Numar subgrupe</th>
+                                    <th>Facultate</th>
+                                    <th>Edit</th>
+                                    <th>Delete</th>
+                                </tr>
+                            </thead>
+                        </table>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-sm-6">
+                        <table id="planuriTable"
+                               class="tableP">
+                            <thead>
+                                <tr>
+                                    <th>Id</th>
+                                    <th>Cod plan invatamant</th>
+                                    <th>An</th>
+                                    <th>Numar grupe</th>
+                                    <th>Numar subgrupe</th>
+                                    <th>Facultate</th>
+                                    <th>Edit</th>
+                                    <th>Delete</th>
+                                </tr>
+                            </thead>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+        <script src="js/grupe.js"></script>
+</body>
+</html>

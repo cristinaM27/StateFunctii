@@ -7,40 +7,45 @@ using System.Globalization;
 using System.Linq;
 using System.Net;
 using System.Net.Http;
+using System.Web;
 using System.Web.Http;
 
 namespace StateFunctii.Controllers
 {
     public class CadreDidacticeController : ApiController
     {
-
+        //Afiseaza cadre
         [HttpGet]
-        public List<CadreDidactice> Get()
+        public List<CadreDidactice> Get(int id)
         {
 
             SqlConnection conn = new SqlConnection(ConfigurationManager.ConnectionStrings["ConnectionString"].ToString());
             conn.Open();
-            string query1 = "select * from CadreDidactice";
+            string query1 = "select * from CadreDidactice where Departament in (select id from Departament where Facultate='"+id+"')";
             SqlCommand com = new SqlCommand(query1, conn);
             var list = new List<CadreDidactice>();
             SqlDataReader reader = com.ExecuteReader();
-
             while (reader.Read())
             {
                 list.Add(new CadreDidactice
                 {
                     id = Int32.Parse((reader["id"]).ToString()),
-                    //Departament=string.IsNullOrEmpty((reader["Departament"].ToString())) ? 0 : Int32.Parse((reader["Departament"]).ToString()),
-                    Departament = reader["Departament"] == null ? 0 : (int)reader["Departament"],
                     nume = reader["nume"].ToString(),
                     prenume = reader["prenume"].ToString(),
-                    titular = Int32.Parse((reader["titular"]).ToString()),
-                    Pozitia = reader["Pozitia"] == null ? 0 : (int)reader["Pozitia"]
+                    Departament = Int32.Parse((reader["Departament"]).ToString()),
+                    Pozitia = Int32.Parse((reader["Pozitia"]).ToString()),
+                    Titlu = Int32.Parse((reader["Titlu"]).ToString()),
+                    Titular = Int32.Parse((reader["titular"]).ToString()),
+                    // Pozitia = reader["Pozitia"] == null ? 0 : (int)reader["Pozitia"]
+                    // Departament = string.IsNullOrEmpty((reader["Departament"].ToString())) ? 0 : Int32.Parse((reader["Departament"]).ToString()),
+                    // Pozitia = string.IsNullOrEmpty((reader["Pozitia"].ToString())) ? 0 : Int32.Parse((reader["Pozitia"]).ToString()),
                 });
             }
             conn.Close();
             return list;
         }
+
+        //Sterge cadru
         [HttpDelete]
         public HttpResponseMessage Delete(int id)
         {
@@ -48,38 +53,42 @@ namespace StateFunctii.Controllers
             conn.Open();
             string query1 = "delete from CadreDidactice where id= '" + id + "'";
             var com = new SqlCommand(query1, conn);
-            //CadreDidactice cadre = Get(id);
-            int idDB = Get(id);
-            if (idDB == 0)
-            {
-                return Request.CreateErrorResponse(HttpStatusCode.BadRequest, "Persoana nu exista");
-            }
-            else
-            {
-                com.ExecuteNonQuery();
-                conn.Close();
-                return Request.CreateResponse(HttpStatusCode.OK, "Sters");
-            }
-
+            com.ExecuteNonQuery();
+            conn.Close();
+            return Request.CreateResponse(HttpStatusCode.OK, "Sters");
         }
-        public int Get(int id)
+
+        //Modifica cadru
+        [HttpPut]
+        public HttpResponseMessage Update(int id, [FromBody]CadreDidactice cadru)
         {
             SqlConnection conn = new SqlConnection(ConfigurationManager.ConnectionStrings["ConnectionString"].ToString());
             conn.Open();
-            string query = "select id from CadreDidactice where id='" + id + "'";
-            SqlCommand com = new SqlCommand(query, conn);
-            SqlDataReader reader = com.ExecuteReader();
-            int idDB = 0;
-            while (reader.Read())
+            string query = "update CadreDidactice set nume=@nume, prenume=@prenume, Departament=@dep, Pozitia=@poz , Titlu=@tit, Titular=@titular where id='" + id + "'";
+            var com = new SqlCommand(query, conn);
+            CadreDidactice cadru1 = ObtineCadru(id);
+            if (cadru1.nume == cadru.nume && cadru1.prenume == cadru.prenume && cadru1.Departament == cadru.Departament && cadru1.Pozitia == cadru.Pozitia && cadru1.Titlu == cadru.Titlu && cadru1.Titular == cadru.Titular )
+            //if (object.Equals(cadru1,cadru))
             {
-                idDB = Int32.Parse((reader["id"]).ToString());
+                return Request.CreateErrorResponse(HttpStatusCode.BadRequest, "Nu sunt campuri de actualizat");
             }
-            conn.Close();
-
-            return idDB;
+            else
+            {
+                    com.Parameters.AddWithValue("@nume", cadru.nume);
+                    com.Parameters.AddWithValue("@prenume", cadru.prenume);
+                    com.Parameters.AddWithValue("@dep", cadru.Departament);
+                    com.Parameters.AddWithValue("@poz", cadru.Pozitia);
+                    com.Parameters.AddWithValue("@tit", cadru.Titlu);
+                    com.Parameters.AddWithValue("@titular", cadru.Titular);
+                    
+                    com.ExecuteNonQuery();
+                    conn.Close();
+                    return Request.CreateResponse(HttpStatusCode.OK, cadru);
+            }
         }
 
-        public CadreDidactice GetCadru(int id)
+
+        public CadreDidactice ObtineCadru(int id)
         {
             SqlConnection conn = new SqlConnection(ConfigurationManager.ConnectionStrings["ConnectionString"].ToString());
             conn.Open();
@@ -92,63 +101,33 @@ namespace StateFunctii.Controllers
                 cadru = new CadreDidactice
                 {
                     id = Int32.Parse((reader["id"]).ToString()),
-                    Departament = string.IsNullOrEmpty((reader["Departament"].ToString())) ? 0 : Int32.Parse((reader["Departament"]).ToString()),
                     nume = reader["nume"].ToString(),
                     prenume = reader["prenume"].ToString(),
-                    titular = Int32.Parse((reader["titular"]).ToString()),
-                    Pozitia = string.IsNullOrEmpty((reader["Pozitia"].ToString())) ? 0 : Int32.Parse((reader["Pozitia"]).ToString())
+                    Departament = Int32.Parse((reader["Departament"]).ToString()),
+                    Pozitia = Int32.Parse((reader["Pozitia"]).ToString()),
+                    Titlu = Int32.Parse((reader["Titlu"]).ToString()),
+                    Titular = Int32.Parse((reader["titular"]).ToString())
                 };
 
             }
             conn.Close();
             return cadru;
         }
-        [HttpPut]
-        public HttpResponseMessage Update(int id, [FromBody]CadreDidactice cadru)
-        {
-            SqlConnection conn = new SqlConnection(ConfigurationManager.ConnectionStrings["ConnectionString"].ToString());
-            conn.Open();
-            string query = "update CadreDidactice set  Departament=@dep, nume=@nume,prenume=@prenume,titular=@titular,Pozitia=@poz where id='" + id + "'";
-            var com = new SqlCommand(query, conn);
-            CadreDidactice cadru1 = GetCadru(id);
-            if (cadru1.nume == cadru.nume && cadru1.prenume == cadru.prenume && cadru1.Departament == cadru.Departament && cadru1.titular == cadru.titular && cadru1.Pozitia == cadru.Pozitia)
-            //if (object.Equals(cadru1,cadru))
-            {
-                return Request.CreateErrorResponse(HttpStatusCode.BadRequest, "Nu sunt campuri de actualizat");
-            }
-            else
-            {
 
-                int idDB = Get(id);
-                if (idDB == 0)
-                {
-                    return Request.CreateErrorResponse(HttpStatusCode.BadRequest, "Persoana nu exista");
-                }
-                else
-                {
-                    com.Parameters.AddWithValue("@dep", cadru.Departament);
-                    com.Parameters.AddWithValue("@nume", cadru.nume);
-                    com.Parameters.AddWithValue("@prenume", cadru.prenume);
-                    com.Parameters.AddWithValue("@titular", cadru.titular);
-                    com.Parameters.AddWithValue("@poz", cadru.Pozitia);
-                    com.ExecuteNonQuery();
-                    conn.Close();
-                    return Request.CreateResponse(HttpStatusCode.OK, cadru);
-                }
-            }
-        }
+        //Adauga cadru
         [HttpPost]
         public HttpResponseMessage Insert([FromBody]CadreDidactice cadru)
         {
             SqlConnection conn = new SqlConnection(ConfigurationManager.ConnectionStrings["ConnectionString"].ToString());
             conn.Open();
-            string query = "insert into CadreDidactice(Departament,nume,prenume,titular,Pozitia) values (@dep,@nume,@prenume,@titular,@poz)";
+            string query = "insert into CadreDidactice(nume,prenume,Departament,Pozitia,Titlu,Titular) values (@nume,@prenume,@dep,@poz,@tit,@titular)";
             var com = new SqlCommand(query, conn);
-            com.Parameters.AddWithValue("@dep", cadru.Departament);
             com.Parameters.AddWithValue("@nume", cadru.nume);
             com.Parameters.AddWithValue("@prenume", cadru.prenume);
-            com.Parameters.AddWithValue("@titular", cadru.titular);
+            com.Parameters.AddWithValue("@dep", cadru.Departament);
             com.Parameters.AddWithValue("@poz", cadru.Pozitia);
+            com.Parameters.AddWithValue("@tit", cadru.Titlu);
+            com.Parameters.AddWithValue("@titular", cadru.Titular);
             com.ExecuteNonQuery();
             conn.Close();
             return Request.CreateResponse(HttpStatusCode.OK, cadru);

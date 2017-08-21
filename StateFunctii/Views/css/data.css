@@ -43,22 +43,27 @@ div#container {
 
 
 .sidebar {
-    position:relative;
-   
+    position: relative;
     width: 250px;
     background: #920005;
     float: left;
-    
+    height: auto;
 }
-.tableD{
-   position:relative;
-   width:1400px;
-   border-style:double;
+.tableD {
+    position: relative;
+    width: 1400px;
+    border-style: double;
+   /* visibility:hidden;*/
+   
 }
-
+.tableP {
+    position: relative;
+    width: 1400px;
+    border-style: double;
+    /*visibility: hidden;*/
+}
 ul#nav {
 }
-
 table {
     font-family: arial, sans-serif;
     border-collapse: collapse;
@@ -89,16 +94,27 @@ input[type=text] {
     width:20px;
 }
 
-.search_bar{
-   margin:auto;
-   
-    
+#searchbar{
+    background-image: url('/css/searchicon.png');
+    background-position: 10px 12px;
+    background-repeat: no-repeat;
+    width: 20%;
+    font-size: 16px;
+    padding: 12px 20px 12px 10px;
+    border: 1px solid #ddd;
+    margin-bottom: 12px;
 }
-
-
+.search_auto{
+    margin:auto;
+}
 .container1{
     width:16px;
     height:100px;
+}
+
+.container2 {
+    width: 16px;
+    height: 100px;
 }
 
 .btnadd {
@@ -133,7 +149,6 @@ input[type=text] {
 }
 .modal-content{
     position:relative;
-    background-color:#e60ec1;
     background-clip:padding-box;
     
 }
@@ -232,7 +247,6 @@ tr:nth-child(even) {
     margin-left: 250px;
     padding: 15px;
 }
-
     .content p {
         color: #424242;
         font-size: 0.8em;
@@ -331,6 +345,60 @@ div#box {
 .input5 {
     border-style: outset;
     position: relative;
-    left: 140px;
+    left: 145px;
+    border-color: black;
+}
+.input6 {
+    border-style: outset;
+    position: relative;
+    left: 160px;
+    border-color: black;
+}
+.in1 {
+    border-style: outset;
+    
+    border-color: black;
+}
+
+.in2 {
+    border-style: outset;
+    margin-left: 80px;
+    border-color: black;
+}
+.in3 {
+    border-style: outset;
+    position: center;
+    border-color: black;
+}
+.in4 {
+    border-style: outset;
+    position: center;
+    border-color: black;
+}
+.in5 {
+    border-style: outset;
+    position: center;
+    border-color: black;
+}
+.mod1 {
+    border-style: outset;
+    border-color: black;
+}
+
+.mod2 {
+    border-style: outset;
+    margin-left: 125px;
+    border-color: black;
+}
+
+.mod3 {
+    border-style: outset;
+    margin-left: 50px;
+    border-color: black;
+}
+
+.mod4 {
+    border-style: outset;
+    margin-left: 20px;
     border-color: black;
 }
