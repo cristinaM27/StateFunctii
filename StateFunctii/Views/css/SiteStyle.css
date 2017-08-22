@@ -119,50 +119,6 @@
     color: #920005;
 }
 
-.label3 {
-    border-bottom-color: #999999;
-    border-right-color: #999999;
-    vertical-align: middle;
-    text-align: right;
-    font-size: 13px;
-    font-family: Tahoma;
-    color: #920005;
-}
-
-.dropList {
-    margin-top:2px;
-    margin-right:42px;
-    border-top-width: 1px;
-    border-left-width: 1px;
-    border-bottom-width: 1px;
-    border-right-width: 1px;
-    border-top-style: solid;
-    border-right-style: solid;
-    border-bottom-style: solid;
-    border-left-style: solid;
-    border-top-color: #C61117;
-    border-left-color: #C61117;
-    border-right-color: #C61117;
-    border-bottom-color: #C61117;
-}
-
-.option {
-    margin-top: 2px;
-    margin-right: 42px;
-    border-top-width: 1px;
-    border-left-width: 1px;
-    border-bottom-width: 1px;
-    border-right-width: 1px;
-    border-top-style: solid;
-    border-right-style: solid;
-    border-bottom-style: solid;
-    border-left-style: solid;
-    border-top-color: #C61117;
-    border-left-color: #C61117;
-    border-right-color: #C61117;
-    border-bottom-color: #C61117;
-}
-
 .btn-succes {
     border-top-color: #000000;
     border-left-color: #000000;
@@ -171,8 +127,7 @@
     border-top-width: 1px;
     border-left-width: 1px;
     font-size: 10px;
-    margin-top: 10px;
-    padding: 3px 8px;
+    padding: 2px 7px;
     border-bottom-width: 1px;
     FONT-FAMILY: Tahoma;
     border-right-width: 2px;
